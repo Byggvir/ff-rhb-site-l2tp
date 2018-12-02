@@ -1,47 +1,23 @@
 # FF-Rheinbach
 
+
+GLUON_FEATURES := \
+	autoupdater \
+	ebtables-filter-multicast \
+	ebtables-filter-ra-dhcp \
+	ebtables-limit-arp \
+	mesh-batman-adv-15 \
+	mesh-vpn-tunneldigger \
+	radvd \
+	respondd \
+	status-page \
+	web-advanced \
+	web-wizard
+	
 GLUON_SITE_PACKAGES := \
-gluon-mesh-batman-adv-15 \
-gluon-alfred \
-gluon-authorized-keys \
-gluon-autoupdater \
-gluon-client-bridge \
-gluon-config-mode-autoupdater \
-gluon-config-mode-contact-info \
-gluon-config-mode-core \
-gluon-config-mode-geo-location \
-gluon-config-mode-hostname \
-gluon-config-mode-mesh-vpn \
-gluon-core \
-gluon-ebtables \
-gluon-ebtables-filter-multicast \
-gluon-ebtables-filter-ra-dhcp \
-gluon-ebtables-segment-mld \
-gluon-ebtables-source-filter \
-gluon-mesh-vpn-core \
-gluon-mesh-vpn-tunneldigger \
-gluon-neighbour-info \
-gluon-node-info \
-gluon-radvd \
-gluon-respondd \
-gluon-setup-mode \
-gluon-site \
-gluon-status-page \
-gluon-status-page-api \
-gluon-wan-dnsmasq \
-gluon-web \
-gluon-web-admin \
-gluon-web-autoupdater \
-gluon-web-network \
-gluon-web-node-role \
-gluon-web-private-wifi \
-gluon-web-theme \
-gluon-web-wifi-config \
-gluon-tunneldigger-watchdog \
-gluon-migrate-vpn \
-haveged \
-iptables \
-iwinfo \
+	haveged \
+	iptables \
+	iwinfo \
 
 
 # basic support for USB stack
@@ -231,12 +207,14 @@ GLUON_tp-link-tl-mr3020-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES
 # mpc85xx-generic
 GLUON_tp-link-tl-wdr4900-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
 
-DEFAULT_GLUON_RELEASE := v2017.1.7-$(shell date '+%Y%m%d')-stable
+# --- Release Information
+
+DEFAULT_GLUON_RELEASE := v2018.1.3-$(shell date '+%Y%m%d')-stable
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 GLUON_PRIORITY ?= 0
-GLUON_LANGS ?= de en
+GLUON_LANGS ?= de
 GLUON_REGION ?= eu
 GLUON_ATH10K_MESH ?= 11s
 GLUON_WLAN_MESH ?= 11s
