@@ -2,6 +2,7 @@
 
 
 GLUON_FEATURES := \
+	authorized-keys \
 	autoupdater \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
