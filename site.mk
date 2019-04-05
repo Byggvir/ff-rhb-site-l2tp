@@ -210,7 +210,7 @@ GLUON_tp-link-tl-wdr4900-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGE
 
 # --- Release Information
 
-DEFAULT_GLUON_RELEASE := v2018.2-$(shell date '+%Y%m%d')-stable
+DEFAULT_GLUON_RELEASE := v2018.2.1-$(shell date '+%Y%m%d')-stable
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
