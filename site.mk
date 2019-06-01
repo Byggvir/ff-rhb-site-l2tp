@@ -4,9 +4,6 @@
 GLUON_FEATURES := \
 	authorized-keys \
 	autoupdater \
-	ebtables-filter-multicast \
-	ebtables-filter-ra-dhcp \
-	ebtables-limit-arp \
 	radvd \
 	respondd \
 	status-page \
