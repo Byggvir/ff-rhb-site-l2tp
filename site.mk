@@ -7,14 +7,11 @@ GLUON_FEATURES := \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
-	ebtables-segment-mld \
-	status-page-api \
-	web-theme \
 	radvd \
 	respondd \
 	status-page \
 	web-advanced \
-	web-wizard
+	web-wizard 
 	
 GLUON_SITE_PACKAGES := \
 	haveged \
