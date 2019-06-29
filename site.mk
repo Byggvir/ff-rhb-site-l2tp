@@ -15,18 +15,34 @@ GLUON_FEATURES := \
 	web-wizard
 	
 GLUON_SITE_PACKAGES := \
-	gluon-web-network \
-	gluon-client-bridge \
-	gluon-ebtables-filter-multicast  \
-	gluon-ebtables-filter-ra-dhcp  \
-	gluon-ebtables-limit-arp  \
-	gluon-ebtables-source-filter  \
-	gluon-radv-filterd  \
-	gluon-web-admin  \
-	gluon-web-logging  \
-	gluon-web-private-wifi \
-	iptables \
-	haveged \
+    gluon-alfred \
+    gluon-config-mode-autoupdater \
+    gluon-config-mode-contact-info \
+    gluon-config-mode-core \
+    gluon-config-mode-geo-location \
+    gluon-config-mode-hostname \
+    gluon-config-mode-mesh-vpn \
+    gluon-core \
+    gluon-banner \
+    gluon-check-client-mesh \
+    gluon-check-mesh \
+    gluon-ebtables-source-filter \
+    gluon-web-admin \
+    gluon-web-autoupdater \
+    gluon-web-network \
+    gluon-web-private-wifi \
+    gluon-web-wifi-config \
+    gluon-neighbour-info \
+    gluon-radvd \
+    gluon-respondd \
+    respondd-module-airtime \
+    gluon-tunneldigger-watchdog \
+    haveged \
+    iptables \
+    iwinfo \
+    iw-full \
+
+
  
 
 
