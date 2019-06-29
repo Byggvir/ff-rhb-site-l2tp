@@ -2,18 +2,34 @@
 
 
 GLUON_FEATURES := \
-	authorized-keys \
 	autoupdater \
+	ebtables-filter-multicast \
+	ebtables-filter-ra-dhcp \
+	ebtables-limit-arp \
+	mesh-batman-adv-15 \
+	mesh-vpn-tunneldigger \
 	radvd \
 	respondd \
 	status-page \
 	web-advanced \
-	web-wizard 
+	web-wizard
 	
 GLUON_SITE_PACKAGES := \
-	haveged \
+	gluon-web-network \
+	gluon-client-bridge \
+	gluon-config-mode-domain-select  \
+	gluon-ebtables-filter-multicast  \
+	gluon-ebtables-filter-ra-dhcp  \
+	gluon-ebtables-limit-arp  \
+	gluon-ebtables-source-filter  \
+	gluon-radv-filterd  \
+	gluon-scheduled-domain-switch  \
+	gluon-web-admin  \
+	gluon-web-logging  \
+	gluon-web-private-wifi \
 	iptables \
-	iwinfo \
+	haveged \
+ 
 
 
 # basic support for USB stack
