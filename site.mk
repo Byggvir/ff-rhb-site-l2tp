@@ -17,13 +17,11 @@ GLUON_FEATURES := \
 GLUON_SITE_PACKAGES := \
 	gluon-web-network \
 	gluon-client-bridge \
-	gluon-config-mode-domain-select  \
 	gluon-ebtables-filter-multicast  \
 	gluon-ebtables-filter-ra-dhcp  \
 	gluon-ebtables-limit-arp  \
 	gluon-ebtables-source-filter  \
 	gluon-radv-filterd  \
-	gluon-scheduled-domain-switch  \
 	gluon-web-admin  \
 	gluon-web-logging  \
 	gluon-web-private-wifi \
