@@ -23,9 +23,6 @@ GLUON_SITE_PACKAGES := \
     gluon-config-mode-hostname \
     gluon-config-mode-mesh-vpn \
     gluon-core \
-    gluon-banner \
-    gluon-check-client-mesh \
-    gluon-check-mesh \
     gluon-ebtables-source-filter \
     gluon-web-admin \
     gluon-web-autoupdater \
