@@ -37,14 +37,11 @@ GLUON_SITE_PACKAGES := \
     gluon-radvd \
     gluon-status-page \
     gluon-status-page-mesh-batman-adv \
+    gluon-wan-dnsmasq \
     iwinfo \
     iw-full \
     iptables \
     haveged \
-    gluon-ssid-changer \
-    gluon-banner \
-    gluon-check-client-mesh \
-    gluon-check-mesh \
     respondd-module-airtime \
 
 
