@@ -16,9 +16,36 @@ GLUON_FEATURES := \
 	web-wizard
 	
 GLUON_SITE_PACKAGES := \
-	haveged \
-	iptables \
-	iwinfo \
+    gluon-mesh-batman-adv-15 \
+    gluon-authorized-keys \
+    gluon-respondd \
+    gluon-neighbour-info \
+    gluon-autoupdater \
+    gluon-config-mode-autoupdater \
+    gluon-config-mode-hostname \
+    gluon-config-mode-geo-location \
+    gluon-config-mode-contact-info \
+    gluon-config-mode-mesh-vpn \
+    gluon-mesh-vpn-tunneldigger \
+    gluon-ebtables-filter-multicast \
+    gluon-ebtables-filter-ra-dhcp \
+    gluon-web-admin \
+    gluon-web-autoupdater \
+    gluon-web-network \
+    gluon-web-private-wifi \
+    gluon-web-node-role \
+    gluon-radvd \
+    gluon-status-page \
+    gluon-status-page-mesh-batman-adv \
+    iwinfo \
+    iw-full \
+    iptables \
+    haveged \
+    gluon-ssid-changer \
+    gluon-banner \
+    gluon-check-client-mesh \
+    gluon-check-mesh \
+    respondd-module-airtime \
 
 
 # basic support for USB stack
