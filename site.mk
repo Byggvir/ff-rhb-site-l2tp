@@ -26,8 +26,6 @@ GLUON_MULTIDOMAIN=0
 GLUON_FEATURES := \
 	autoupdater \
 	authorized-keys \
-	config-mode-domain-select \
-	config-mode-geo-location-osm \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	mesh-batman-adv-15 \
