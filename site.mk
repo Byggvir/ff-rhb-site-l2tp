@@ -16,7 +16,7 @@ GLUON_LANGS ?= en de
 GLUON_WLAN_MESH ?= 11s
 
 # Build gluon with multidomain support.
-GLUON_MULTIDOMAIN=1
+GLUON_MULTIDOMAIN=0
 
 #############################
 # Default packages
