@@ -1,112 +1,101 @@
-# FF-Rheinbach
+# --- Release Information
 
+DEFAULT_GLUON_RELEASE := v2018.2.2-$(shell date '+%Y%m%d')-stable
 
+# Default priority for updates.
+GLUON_PRIORITY ?= 5
+
+# Region code required for some images; supported values: us eu
+GLUON_REGION ?= eu
+
+# languages to include in images
+GLUON_LANGS ?= en de
+
+# Prefer ath10k firmware with 802.11s support
+GLUON_WLAN_MESH ?= 11s
+
+# Build gluon with multidomain support.
+GLUON_MULTIDOMAIN=1
+
+#############################
+# Default packages
+#############################
+
+# Featureset, these are either virtual or packages prefixed with "gluon-"
 GLUON_FEATURES := \
-	authorized-keys \
 	autoupdater \
+	config-mode-domain-select \
+	config-mode-geo-location-osm \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
-	ebtables-limit-arp \
 	mesh-batman-adv-15 \
-	mesh-vpn-tunneldigger \
+	mesh-vpn-fastd \
+	radv-filterd \
 	radvd \
 	respondd \
 	status-page \
 	web-advanced \
+	web-logging \
+	web-private-wifi \
 	web-wizard
-	
+
+# Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
-    gluon-mesh-batman-adv-15 \
-    gluon-authorized-keys \
-    gluon-respondd \
-    gluon-neighbour-info \
-    gluon-autoupdater \
-    gluon-config-mode-autoupdater \
-    gluon-config-mode-hostname \
-    gluon-config-mode-geo-location \
-    gluon-config-mode-contact-info \
-    gluon-config-mode-mesh-vpn \
-    gluon-mesh-vpn-tunneldigger \
-    gluon-ebtables-filter-multicast \
-    gluon-ebtables-filter-ra-dhcp \
-    gluon-web-admin \
-    gluon-web-autoupdater \
-    gluon-web-network \
-    gluon-web-private-wifi \
-    gluon-web-node-role \
-    gluon-radvd \
-    gluon-status-page \
-    gluon-status-page-mesh-batman-adv \
-    gluon-wan-dnsmasq \
-    iwinfo \
-    iw-full \
-    iptables \
-    haveged \
-    respondd-module-airtime \
+	gluon-web-ffda-domain-director \
+	ffda-domain-director \
+	iptables \
+	iwinfo \
+	haveged \
+	respondd-module-airtime
 
+#############################
+# Additional package sets
+#############################
 
-# basic support for USB stack
-USB_PACKAGES_BASIC := \
-	kmod-usb-core \
-	kmod-usb2
+# USB Human Interface
+USB_PACKAGES_HID := \
+	kmod-usb-hid \
+	kmod-hid-generic
 
-# UMTS support for USB devices
-USB_PACKAGES_UMTS := \
-	libusb-1.0 \
-	usb-modeswitch \
-	usbreset \
-	chat \
-	comgt \
-	kmod-ppp \
-	kmod-pppoe \
+# USB Serial
+USB_PACKAGES_SERIAL := \
 	kmod-usb-serial \
-	kmod-usb-serial-option \
-	kmod-usb-serial-wwan \
-	ppp \
-	ppp-mod-pppoe
-	
-# storage support for USB devices
+	kmod-usb-serial-ftdi \
+	kmod-usb-serial-pl2303
+
+# USB Storage
 USB_PACKAGES_STORAGE := \
 	block-mount \
 	blkid \
 	kmod-fs-ext4 \
+	kmod-fs-ntfs \
 	kmod-fs-vfat \
 	kmod-usb-storage \
 	kmod-usb-storage-extras \
+	kmod-nls-base \
 	kmod-nls-cp1250 \
 	kmod-nls-cp1251 \
 	kmod-nls-cp437 \
-	kmod-nls-cp775 \
 	kmod-nls-cp850 \
 	kmod-nls-cp852 \
-	kmod-nls-cp866 \
 	kmod-nls-iso8859-1 \
 	kmod-nls-iso8859-13 \
 	kmod-nls-iso8859-15 \
 	kmod-nls-iso8859-2 \
-	kmod-nls-koi8r \
 	kmod-nls-utf8 \
-	swap-utils
+swap-utils
 
-# network support for USB devices
+# USB Network
 USB_PACKAGES_NET := \
-	kmod-ath9k-htc  \
-	kmod-ath9k-common \
-	kmod-ath \
-	kmod-brcmfmac \
-	kmod-carl9170 \
+	kmod-ath9k-htc \
 	kmod-mii \
 	kmod-nls-base \
-	kmod-rt73-usb \
-	kmod-rtl8192cu \
-	kmod-rtl8187 \
 	kmod-usb-net \
 	kmod-usb-net-asix \
 	kmod-usb-net-asix-ax88179 \
 	kmod-usb-net-cdc-eem \
 	kmod-usb-net-cdc-ether \
 	kmod-usb-net-cdc-mbim \
-	kmod-usb-net-cdc-ncm \
 	kmod-usb-net-cdc-subset \
 	kmod-usb-net-dm9601-ether \
 	kmod-usb-net-hso \
@@ -122,28 +111,16 @@ USB_PACKAGES_NET := \
 	kmod-usb-net-sierrawireless \
 	kmod-usb-net-smsc95xx
 
-# network support for PCI devices
-PCI_PACKAGES_NET := \
-	kmod-3c59x \
-	kmod-e100 \
-	kmod-e1000 \
-	kmod-e1000e \
-	kmod-forcedeth \
-	kmod-igb \
-	kmod-natsemi \
-	kmod-ne2k-pci \
-	kmod-pcnet32 \
-	kmod-r8169 \
-	kmod-sis900 \
-	kmod-sky2 \
-	kmod-tg3 \
-	kmod-tulip \
-	kmod-via-rhine
+# PCI-Express Network
+PCIE_PACKAGES_NET := \
+	kmod-bnx2
 
-# misc packages
-MISC_PACKAGES := \
-	kmod-usb-acm \
-	kmod-usb-serial-simple
+# additional packages
+TOOLS_PACKAGES := \
+	iperf \
+	socat \
+	tcpdump \
+	vnstat
 
 USB_PACKAGES_MR3020 := \
 	kmod-nls-base \
@@ -154,92 +131,59 @@ USB_PACKAGES_MR3020 := \
 	kmod-usb-net-rndis \
 	kmod-usb-uhci
 
-#
-# $(GLUON_TARGET) specific settings:
-#
 
-# x86-generic
+# Group previous package sets
+USB_PACKAGES_WITHOUT_HID := \
+	usbutils \
+	usb-modeswitch \
+	$(USB_PACKAGES_SERIAL) \
+	$(USB_PACKAGES_STORAGE) \
+	$(USB_PACKAGES_NET)
+
+USB_PACKAGES := \
+	$(USB_PACKAGES_HID) \
+	$(USB_PACKAGES_WITHOUT_HID)
+
+PCIE_PACKAGES := \
+	pciutils \
+	$(PCIE_PACKAGES_NET)
+
+##################################
+# Assign package sets to targets
+##################################
+
+# x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
-# support the usb stack on x86 devices
-# and add a few common USB and PCI NICs
-GLUON_SITE_PACKAGES += \
-	kmod-usb-hid \
-	kmod-hid-generic \
-	$(USB_PACKAGES_BASIC) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	$(PCI_PACKAGES_NET) \
-	
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES) $(PCIE_PACKAGES) $(TOOLS_PACKAGES)
 endif
 
-# x86-64
 ifeq ($(GLUON_TARGET),x86-64)
-# support the usb stack on x86-64 devices
-# and add a few common USB and PCI NICs
-GLUON_SITE_PACKAGES += \
-	kmod-usb-hid \
-	kmod-hid-generic \
-	$(USB_PACKAGES_BASIC) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	$(PCI_PACKAGES_NET) \
-	
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES) $(PCIE_PACKAGES) $(TOOLS_PACKAGES)
 endif
 
-# Raspberry Pi A/B/B+
+# PCEngines ALIX Boards
+ifeq ($(GLUON_TARGET),x86-geode)
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES) $(PCIE_PACKAGES) $(TOOLS_PACKAGES)
+endif
+
+#  Raspberry Pi A/B/B+
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-hid \
-	kmod-hid-generic \
-	$(USB_PACKAGES_BASIC) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES)
 endif
 
 # Raspberry Pi 2
 ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-hid \
-	kmod-hid-generic \
-	$(USB_PACKAGES_BASIC) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES)
 endif
 
-# ar71xx-generic / tiny
-GLUON_tp-link-archer-c7-v2_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-archer-c7-v4_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
+# Raspberry Pi 3
+ifeq ($(GLUON_TARGET),brcm2708-bcm2710)
+        GLUON_SITE_PACKAGES += $(USB_PACKAGES)
+endif
 
-# 842 can't install a full featured usb image, we don't need network and UMTS on our 842 devices
-
-GLUON_tp-link-tl-wr842n-nd-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_STORAGE)
-GLUON_tp-link-tl-wr842n-nd-v2_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_STORAGE)
-GLUON_tp-link-tl-wr842n-nd-v3_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_STORAGE)
-
-GLUON_tp-link-tl-wr1043n-nd-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-tl-wr1043n-nd-v2_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-tl-wr1043n-nd-v3_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-tl-wr1043n-nd-v4_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-
-GLUON_tp-link-tl-wdr3500-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-tl-wdr3600-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-GLUON_tp-link-tl-wdr4300-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_UMTS) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
+# Banana Pi/Pro, Lamobo R1
+ifeq ($(GLUON_TARGET),sunxi)
+	GLUON_SITE_PACKAGES += $(USB_PACKAGES)
+endif
 
 GLUON_tp-link-tl-mr3020-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_MR3020) -gluon-status-page
-
-# mpc85xx-generic
-GLUON_tp-link-tl-wdr4900-v1_SITE_PACKAGES := $(USB_PACKAGES_BASIC) $(USB_PACKAGES_STORAGE) $(USB_PACKAGES_NET) $(MISC_PACKAGES)
-
-# --- Release Information
-
-DEFAULT_GLUON_RELEASE := v2018.2.1-$(shell date '+%Y%m%d')-stable
-
-# Allow overriding the release number from the command line
-GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
-GLUON_PRIORITY ?= 0
-GLUON_LANGS ?= de
-GLUON_REGION ?= eu
-GLUON_ATH10K_MESH ?= 11s
-GLUON_WLAN_MESH ?= 11s
