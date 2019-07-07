@@ -1,6 +1,7 @@
 # --- Release Information
 
 DEFAULT_GLUON_RELEASE := v2018.2.2-$(shell date '+%Y%m%d')-stable
+GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 
 # Default priority for updates.
 GLUON_PRIORITY ?= 5
