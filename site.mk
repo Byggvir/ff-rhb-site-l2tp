@@ -25,12 +25,13 @@ GLUON_MULTIDOMAIN=1
 # Featureset, these are either virtual or packages prefixed with "gluon-"
 GLUON_FEATURES := \
 	autoupdater \
+	authorized-keys \
 	config-mode-domain-select \
 	config-mode-geo-location-osm \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	mesh-batman-adv-15 \
-	mesh-vpn-fastd \
+	mesh-vpn-tunneldigger \
 	radv-filterd \
 	radvd \
 	respondd \
@@ -42,8 +43,6 @@ GLUON_FEATURES := \
 
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
-	gluon-web-ffda-domain-director \
-	ffda-domain-director \
 	iptables \
 	iwinfo \
 	haveged \
